@@ -40,3 +40,23 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Professional centered hero card */
+.hero-card {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.35), 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(226, 232, 240, 0.06);
+}
+
+.hero-card img {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hero-card {
+    margin: 0 1rem;
+    padding: 1.5rem;
+    border-radius: 14px;
+  }
+}

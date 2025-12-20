@@ -3,22 +3,16 @@ import { useState } from "react";
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden scroll-smooth">
+    <div className="min-h-screen bg-white relative overflow-hidden scroll-smooth">
       {/* Enhanced Background with Orange Theme */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,165,0,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,140,0,0.08),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,transparent_0deg,rgba(255,165,0,0.03)_60deg,rgba(255,140,0,0.03)_120deg,transparent_180deg)]"></div>
 
-      {/* Animated Background Elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-orange-400/5 rounded-full blur-2xl animate-pulse delay-500"></div>
-
-      {/* Enhanced Navigation */}
-      <nav className="bg-black/90 backdrop-blur-xl border-b border-orange-500/20 sticky top-0 z-50 shadow-2xl">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-sm border-b border-gray-200 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center group">
@@ -26,11 +20,11 @@ function App() {
                 <img
                   src={solvTechLogo}
                   alt="SolvTech Logo"
-                  className="h-12 w-auto transition-transform duration-300 group-hover:scale-110"
+                  className="h-12 w-auto transition-transform duration-300 group-hover:scale-110 filter brightness-0 invert"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-              <span className="ml-4 text-2xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
+              <span className="ml-4 text-2xl font-bold text-gray-900">
                 SolvTech
               </span>
             </div>
@@ -38,7 +32,7 @@ function App() {
               <div className="ml-10 flex items-baseline space-x-1">
                 <a
                   href="#home"
-                  className="relative text-white hover:text-orange-400 focus:text-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-white/5 group"
+                  className="relative text-gray-700 hover:text-orange-500 focus:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-200 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-gray-50 group"
                 >
                   <span className="relative z-10">Beranda</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-orange-600/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -73,11 +67,20 @@ function App() {
                 </a>
               </div>
             </div>
+            {/* Desktop CTA */}
+            <div className="hidden md:flex items-center ml-6">
+              <a
+                href="#contact"
+                className="px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-md shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              >
+                Mulai Sekarang
+              </a>
+            </div>
             {/* Mobile Menu Button */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-white hover:text-orange-400 p-2 rounded-lg hover:bg-white/5 transition-all duration-300"
+                className="text-gray-700 hover:text-orange-400 p-2 rounded-lg hover:bg-white/5 transition-all duration-300"
                 aria-label="Toggle mobile menu"
               >
                 <svg
@@ -154,8 +157,9 @@ function App() {
       {/* Enterprise Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-gray-900 to-slate-950"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
       >
+        {/* Light / Professional hero layout (left copy, right visual) */}
         {/* Advanced Background System */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,165,0,0.03),transparent_70%)]"></div>
@@ -175,28 +179,28 @@ function App() {
         <div className="absolute bottom-1/4 right-1/4 w-1.5 h-1.5 bg-orange-300 rounded-full animate-ping"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-24">
             {/* Left Content */}
             <div className="space-y-8">
               {/* Company Badge */}
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 backdrop-blur-sm">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
                 <div className="w-2 h-2 bg-orange-500 rounded-full mr-3 animate-pulse"></div>
-                <span className="text-orange-400 text-sm font-medium">
+                <span className="text-orange-600 text-sm font-medium">
                   SolvTech - Penyedia Solusi IT
                 </span>
               </div>
 
               {/* Main Headline */}
               <div className="space-y-6">
-                <h1 className="text-5xl lg:text-7xl font-black leading-tight">
-                  <span className="block text-white">Transformasikan</span>
+                <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
+                  <span className="block">Transformasikan</span>
                   <span className="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
                     Bisnis Anda
                   </span>
-                  <span className="block text-white">dengan Teknologi</span>
+                  <span className="block">dengan Teknologi</span>
                 </h1>
 
-                <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl">
+                <p className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl">
                   Kami menyediakan solusi IT tingkat enterprise yang mendorong
                   pertumbuhan, efisiensi, dan inovasi untuk bisnis modern.
                 </p>
@@ -208,7 +212,7 @@ function App() {
                   href="https://wa.me/+62882003843947?text=Halo%20SolvTech,%20saya%20tertarik%20untuk%20memulai%20proyek%20dengan%20Anda"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-orange-500/25"
+                  className="group relative px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg transform hover:-translate-y-1 transition-all duration-200 shadow-md hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
                 >
                   <span className="relative z-10 flex items-center justify-center">
                     <svg
@@ -222,7 +226,7 @@ function App() {
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-500 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                 </a>
-                <button className="group px-8 py-4 border border-orange-500/50 text-orange-400 font-semibold rounded-lg hover:bg-orange-500/10 hover:border-orange-500 transition-all duration-300 backdrop-blur-sm">
+                <button className="group px-6 py-3 md:px-8 md:py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transform hover:-translate-y-0.5 transition-all duration-200 shadow-sm">
                   <span className="flex items-center">
                     Lihat Portfolio
                     <svg
@@ -245,31 +249,59 @@ function App() {
               {/* Trust Indicators */}
               <div className="flex items-center space-x-8 pt-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">100+</div>
-                  <div className="text-sm text-gray-400">Proyek</div>
+                  <div className="text-2xl font-bold text-gray-900">100+</div>
+                  <div className="text-sm text-gray-500">Proyek</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">50+</div>
-                  <div className="text-sm text-gray-400">Klien</div>
+                  <div className="text-2xl font-bold text-gray-900">50+</div>
+                  <div className="text-sm text-gray-500">Klien</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">24/7</div>
-                  <div className="text-sm text-gray-400">Dukungan</div>
+                  <div className="text-2xl font-bold text-gray-900">24/7</div>
+                  <div className="text-sm text-gray-500">Dukungan</div>
                 </div>
               </div>
             </div>
 
-            {/* Right Content - Logo & Visual */}
+            {/* Right Content - Visual card with stats */}
             <div className="flex justify-center lg:justify-end">
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
-                <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-3xl p-12 border border-orange-500/20 shadow-2xl">
+              <div className="relative group w-full max-w-lg">
+                <div className="relative bg-white rounded-3xl p-10 border border-gray-100 shadow-lg">
                   <img
                     src={solvTechLogo}
-                    className="w-48 h-48 mx-auto drop-shadow-2xl transition-all duration-700 group-hover:scale-105"
+                    className="w-48 h-48 mx-auto transition-all duration-500"
                     alt="SolvTech Logo"
                   />
-                  <div className="absolute inset-0 border-2 border-orange-500/30 rounded-3xl animate-pulse"></div>
+                  <div className="mt-6 grid grid-cols-2 gap-4">
+                    <div className="p-4 bg-gray-50 rounded-xl text-center">
+                      <div className="text-2xl font-bold text-gray-900">
+                        50+
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        Proyek Selesai
+                      </div>
+                    </div>
+                    <div className="p-4 bg-gray-50 rounded-xl text-center">
+                      <div className="text-2xl font-bold text-gray-900">
+                        99%
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        Kepuasan Klien
+                      </div>
+                    </div>
+                    <div className="p-4 bg-gray-50 rounded-xl text-center">
+                      <div className="text-2xl font-bold text-gray-900">3+</div>
+                      <div className="text-sm text-gray-500">
+                        Tahun Pengalaman
+                      </div>
+                    </div>
+                    <div className="p-4 bg-gray-50 rounded-xl text-center">
+                      <div className="text-2xl font-bold text-gray-900">
+                        24/7
+                      </div>
+                      <div className="text-sm text-gray-500">Dukungan</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -278,10 +310,7 @@ function App() {
       </section>
 
       {/* Enterprise About Section */}
-      <section
-        id="about"
-        className="relative py-32 bg-gradient-to-b from-slate-950 to-gray-900 overflow-hidden"
-      >
+      <section id="about" className="relative py-32 bg-gray-50 overflow-hidden">
         {/* Subtle Background */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,165,0,0.02),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[linear-gradient(60deg,transparent_0%,rgba(255,140,0,0.01)_50%,transparent_100%)]"></div>
@@ -291,17 +320,17 @@ function App() {
           <div className="text-center mb-20">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 backdrop-blur-sm mb-6">
               <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
-              <span className="text-orange-400 text-sm font-medium">
+              <span className="text-orange-600 text-sm font-medium">
                 Mengapa Memilih Kami
               </span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-white mb-6">
+            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-6">
               Solusi IT
               <span className="block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                 Tingkat Enterprise
               </span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Kami menggabungkan teknologi terdepan dengan metodologi yang
               terbukti untuk memberikan solusi yang scalable, aman, dan inovatif
               yang mendorong pertumbuhan bisnis.
@@ -313,7 +342,7 @@ function App() {
             {/* Feature 1 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -329,10 +358,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Keamanan Enterprise
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   Protokol keamanan tingkat bank dan standar compliance untuk
                   perlindungan data maksimal.
                 </p>
@@ -342,7 +371,7 @@ function App() {
             {/* Feature 2 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -358,10 +387,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Deployment Cepat
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   Metodologi pengembangan agile yang memastikan time-to-market
                   lebih cepat dengan continuous delivery.
                 </p>
@@ -371,7 +400,7 @@ function App() {
             {/* Feature 3 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -387,10 +416,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Solusi Scalable
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   Arsitektur cloud-native yang dirancang untuk berkembang sesuai
                   kebutuhan bisnis dan basis pengguna Anda.
                 </p>
@@ -400,7 +429,7 @@ function App() {
             {/* Feature 4 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -416,10 +445,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Dukungan 24/7
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   Dukungan teknis dan monitoring 24 jam untuk memastikan
                   performa sistem yang optimal.
                 </p>
@@ -432,7 +461,7 @@ function App() {
       {/* Enterprise Services Section */}
       <section
         id="services"
-        className="relative py-32 bg-gradient-to-b from-gray-900 to-slate-950 overflow-hidden"
+        className="relative py-32 bg-gray-50 overflow-hidden"
       >
         {/* Subtle Background */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,165,0,0.02),transparent_50%)]"></div>
@@ -443,24 +472,24 @@ function App() {
           <div className="text-center mb-20">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 backdrop-blur-sm mb-6">
               <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
-              <span className="text-orange-400 text-sm font-medium">
+              <span className="text-orange-600 text-sm font-medium">
                 Layanan Kami
               </span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-white mb-6">
+            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-6">
               Solusi IT
               <span className="block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                 Komprehensif
               </span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Dari konsep hingga deployment, kami menyediakan solusi teknologi
               end-to-end yang mentransformasi bisnis dan mendorong inovasi
               digital.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-500 hover:-translate-y-3 relative overflow-hidden">
+            <div className="group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-3 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-orange-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
@@ -478,15 +507,15 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Pengembangan Web
                 </h3>
-                <p className="text-gray-400 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-6">
                   Aplikasi web custom yang dibangun dengan framework modern,
                   dioptimalkan untuk performa dan skalabilitas.
                 </p>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center text-orange-400 font-medium group-hover:text-orange-300 transition-colors duration-300">
+                  <div className="flex items-center text-orange-600 font-medium group-hover:text-orange-500 transition-colors duration-300">
                     <span className="text-sm">Pelajari Lebih Lanjut</span>
                     <svg
                       className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
@@ -506,7 +535,7 @@ function App() {
                     href="https://wa.me/+62882003843947?text=Halo%20SolvTech,%20saya%20tertarik%20dengan%20layanan%20Web%20Development"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn relative bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-green-500/25"
+                    className="group/btn inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-gradient-to-r from-green-500 to-green-600 text-white text-sm font-semibold rounded-md shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-200"
                   >
                     <span className="flex items-center">
                       <svg
@@ -518,14 +547,14 @@ function App() {
                       </svg>
                       Hubungi
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-lg opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-md opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
                   </a>
                 </div>
               </div>
             </div>
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -541,10 +570,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Pengembangan Mobile
                 </h3>
-                <p className="text-gray-400 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-6">
                   Aplikasi mobile native dan cross-platform yang memberikan
                   pengalaman pengguna yang luar biasa.
                 </p>
@@ -569,7 +598,7 @@ function App() {
                     href="https://wa.me/+62882003843947?text=Halo%20SolvTech,%20saya%20tertarik%20dengan%20layanan%20Mobile%20Development"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn relative bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-green-500/25"
+                    className="group/btn inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-gradient-to-r from-green-500 to-green-600 text-white text-sm font-semibold rounded-md shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-200"
                   >
                     <span className="flex items-center">
                       <svg
@@ -581,12 +610,12 @@ function App() {
                       </svg>
                       Hubungi
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-lg opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-md opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
                   </a>
                 </div>
               </div>
             </div>
-            <div className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-500 hover:-translate-y-3 relative overflow-hidden">
+            <div className="group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-3 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-orange-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
@@ -610,10 +639,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Sistem Enterprise
                 </h3>
-                <p className="text-gray-400 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-6">
                   Sistem ERP custom dan manajemen bisnis yang merampingkan
                   operasi dan meningkatkan efisiensi.
                 </p>
@@ -638,7 +667,7 @@ function App() {
                     href="https://wa.me/+62882003843947?text=Halo%20SolvTech,%20saya%20tertarik%20dengan%20layanan%20Enterprise%20Systems"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn relative bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-green-500/25"
+                    className="group/btn inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-gradient-to-r from-green-500 to-green-600 text-white text-sm font-semibold rounded-md shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-200"
                   >
                     <span className="flex items-center">
                       <svg
@@ -650,12 +679,12 @@ function App() {
                       </svg>
                       Hubungi
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-lg opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-md opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
                   </a>
                 </div>
               </div>
             </div>
-            <div className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-500 hover:-translate-y-3 relative overflow-hidden">
+            <div className="group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-3 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-orange-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
@@ -673,10 +702,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Desain UI/UX
                 </h3>
-                <p className="text-gray-400 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-6">
                   Solusi desain berpusat pada pengguna yang meningkatkan
                   pengalaman pengguna dan mendorong engagement.
                 </p>
@@ -701,7 +730,7 @@ function App() {
                     href="https://wa.me/+62882003843947?text=Halo%20SolvTech,%20saya%20tertarik%20dengan%20layanan%20UI/UX%20Design"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/btn relative bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-green-500/25"
+                    className="group/btn inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-gradient-to-r from-green-500 to-green-600 text-white text-sm font-semibold rounded-md shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-200"
                   >
                     <span className="flex items-center">
                       <svg
@@ -713,12 +742,12 @@ function App() {
                       </svg>
                       Hubungi
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-lg opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-md opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
                   </a>
                 </div>
               </div>
             </div>
-            <div className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-500 hover:-translate-y-3 relative overflow-hidden">
+            <div className="group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-3 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-orange-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
@@ -736,10 +765,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Pemasaran Digital
                 </h3>
-                <p className="text-gray-400 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-6">
                   Kampanye pemasaran digital strategis yang mendorong engagement
                   dan mengkonversi prospek menjadi pelanggan.
                 </p>
@@ -781,7 +810,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-500 hover:-translate-y-3 relative overflow-hidden">
+            <div className="group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-3 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-orange-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
@@ -799,10 +828,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Solusi Cloud
                 </h3>
-                <p className="text-gray-400 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-6">
                   Infrastruktur cloud yang scalable dan layanan migrasi untuk
                   operasi bisnis modern.
                 </p>
@@ -844,7 +873,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-500 hover:-translate-y-3 relative overflow-hidden">
+            <div className="group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-3 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-orange-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
@@ -862,10 +891,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Pelatihan Kreatif
                 </h3>
-                <p className="text-gray-400 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-6">
                   Program pelatihan intensif untuk mengembangkan skill kreatif
                   dan teknis dalam bidang teknologi dan desain.
                 </p>
@@ -907,16 +936,34 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl p-8 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 hover:shadow-2xl hover:shadow-orange-500/20 transition-all duration-500 hover:-translate-y-3 relative overflow-hidden md:col-span-2 lg:col-span-1">
+            <div className="group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-3 relative overflow-hidden md:col-span-2 lg:col-span-1">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-orange-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                  <span className="text-white text-2xl">🎓</span>
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14v7a4 4 0 004-4"
+                    />
+                  </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-400 transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-orange-400 transition-colors duration-300">
                   Pelatihan Kreator
                 </h3>
-                <p className="text-gray-300 text-lg leading-relaxed group-hover:text-white/90 transition-colors duration-300 mb-6">
+                <p className="text-gray-600 text-lg leading-relaxed transition-colors duration-300 mb-6">
                   Workshop dan training untuk meningkatkan skill konten kreatif
                 </p>
                 <div className="flex items-center justify-between">
@@ -964,7 +1011,7 @@ function App() {
       {/* Enterprise Testimonials Section */}
       <section
         id="testimonials"
-        className="relative py-32 bg-gradient-to-b from-slate-950 to-gray-900 overflow-hidden"
+        className="relative py-32 bg-gray-50 overflow-hidden"
       >
         {/* Subtle Background */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,165,0,0.02),transparent_70%)]"></div>
@@ -979,13 +1026,13 @@ function App() {
                 Kisah Sukses Klien
               </span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-white mb-6">
+            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-6">
               Dipercaya oleh
               <span className="block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                 Pemimpin Industri
               </span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Temukan bagaimana kami telah membantu bisnis mentransformasi
               operasi mereka dan mencapai keunggulan digital melalui solusi IT
               yang inovatif.
@@ -994,7 +1041,7 @@ function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-orange-500/25">
                     <svg
@@ -1012,13 +1059,13 @@ function App() {
                     </svg>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-white font-bold text-lg">
+                    <h4 className="text-gray-900 font-bold text-lg">
                       Sarah Johnson
                     </h4>
-                    <p className="text-gray-400">CTO, InnovateCorp</p>
+                    <p className="text-gray-600">CTO, InnovateCorp</p>
                   </div>
                 </div>
-                <blockquote className="text-gray-300 leading-relaxed mb-6">
+                <blockquote className="text-gray-600 leading-relaxed mb-6">
                   "SolvTech memberikan migrasi cloud yang luar biasa yang
                   mengurangi biaya infrastruktur kami sebesar 40% sambil
                   meningkatkan performa. Keahlian mereka dalam arsitektur
@@ -1043,7 +1090,7 @@ function App() {
             </div>
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-orange-500/25">
                     <svg
@@ -1061,13 +1108,13 @@ function App() {
                     </svg>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-white font-bold text-lg">
+                    <h4 className="text-gray-900 font-bold text-lg">
                       Michael Chen
                     </h4>
-                    <p className="text-gray-400">CEO, DataFlow Systems</p>
+                    <p className="text-gray-600">CEO, DataFlow Systems</p>
                   </div>
                 </div>
-                <blockquote className="text-gray-300 leading-relaxed mb-6">
+                <blockquote className="text-gray-600 leading-relaxed mb-6">
                   "Aplikasi mobile yang dikembangkan SolvTech untuk kami telah
                   merevolusi customer engagement kami. User experience-nya
                   sempurna dan performanya luar biasa."
@@ -1091,7 +1138,7 @@ function App() {
             </div>
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-orange-500/25">
                     <svg
@@ -1143,7 +1190,7 @@ function App() {
       </section>
 
       {/* Affiliate Program Section */}
-      <section className="relative py-32 bg-gradient-to-b from-gray-900 to-slate-950 overflow-hidden">
+      <section className="relative py-32 bg-gray-50 overflow-hidden">
         {/* Subtle Background */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,165,0,0.03),transparent_70%)]"></div>
         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_0%,rgba(255,140,0,0.02)_50%,transparent_100%)]"></div>
@@ -1157,13 +1204,13 @@ function App() {
                 Program Affiliate
               </span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-white mb-6">
+            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-6">
               Bergabung dengan
               <span className="block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                 Program Affiliate Kami
               </span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Dapatkan komisi menarik dengan mereferensikan layanan SolvTech
               kepada klien potensial. Program affiliate kami memberikan peluang
               penghasilan pasif yang menguntungkan.
@@ -1175,7 +1222,7 @@ function App() {
             {/* Benefit 1 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -1191,10 +1238,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Komisi Tinggi
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   Dapatkan komisi hingga 30% dari setiap proyek yang berhasil
                   direferensikan.
                 </p>
@@ -1204,7 +1251,7 @@ function App() {
             {/* Benefit 2 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -1220,10 +1267,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Pembayaran Cepat
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   Pembayaran komisi dilakukan setiap bulan tanpa penundaan.
                 </p>
               </div>
@@ -1232,7 +1279,7 @@ function App() {
             {/* Benefit 3 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-8 border border-slate-700/50 hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -1248,10 +1295,10 @@ function App() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Dukungan Lengkap
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   Mendapatkan materi marketing dan dukungan penjualan dari tim
                   kami.
                 </p>
@@ -1424,7 +1471,7 @@ function App() {
       </section>
 
       {/* Enterprise Footer */}
-      <footer className="relative bg-gradient-to-b from-slate-950 to-black text-white py-20 border-t border-orange-500/20">
+      <footer className="relative bg-gray-100 text-gray-800 py-20 border-t border-gray-200">
         {/* Subtle Background */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,165,0,0.02),transparent_50%)]"></div>
 
@@ -1437,15 +1484,14 @@ function App() {
                   <img
                     src={solvTechLogo}
                     alt="SolvTech Logo"
-                    className="h-16 w-auto drop-shadow-2xl"
+                    className="h-16 w-auto"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full blur-lg opacity-50"></div>
                 </div>
-                <span className="ml-6 text-3xl font-black text-white">
+                <span className="ml-6 text-3xl font-black text-gray-900">
                   SolvTech
                 </span>
               </div>
-              <p className="text-gray-300 mb-8 text-lg leading-relaxed max-w-md">
+              <p className="text-gray-600 mb-8 text-lg leading-relaxed max-w-md">
                 Penyedia terkemuka solusi IT tingkat enterprise yang mendorong
                 transformasi digital dan mempercepat pertumbuhan bisnis melalui
                 teknologi inovatif.
@@ -1455,10 +1501,10 @@ function App() {
               <div className="flex space-x-4">
                 <a
                   href="#"
-                  className="group w-12 h-12 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-xl flex items-center justify-center hover:from-orange-500 hover:to-orange-600 transition-all duration-300 hover:scale-110"
+                  className="group w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm hover:scale-105 transition-transform duration-200"
                 >
                   <svg
-                    className="w-6 h-6 text-orange-400 group-hover:text-white transition-colors duration-300"
+                    className="w-6 h-6 text-orange-600 group-hover:text-white transition-colors duration-300"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -1467,10 +1513,10 @@ function App() {
                 </a>
                 <a
                   href="#"
-                  className="group w-12 h-12 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-xl flex items-center justify-center hover:from-orange-500 hover:to-orange-600 transition-all duration-300 hover:scale-110"
+                  className="group w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm hover:scale-105 transition-transform duration-200"
                 >
                   <svg
-                    className="w-6 h-6 text-orange-400 group-hover:text-white transition-colors duration-300"
+                    className="w-6 h-6 text-orange-600 group-hover:text-white transition-colors duration-300"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -1479,10 +1525,10 @@ function App() {
                 </a>
                 <a
                   href="#"
-                  className="group w-12 h-12 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-xl flex items-center justify-center hover:from-orange-500 hover:to-orange-600 transition-all duration-300 hover:scale-110"
+                  className="group w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm hover:scale-105 transition-transform duration-200"
                 >
                   <svg
-                    className="w-6 h-6 text-orange-400 group-hover:text-white transition-colors duration-300"
+                    className="w-6 h-6 text-orange-600 group-hover:text-white transition-colors duration-300"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -1492,7 +1538,7 @@ function App() {
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-8 text-orange-400">
+              <h3 className="text-xl font-bold mb-8 text-orange-600">
                 Hubungi Kami
               </h3>
               <div className="space-y-4">
@@ -1513,12 +1559,10 @@ function App() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-orange-300 text-sm font-medium drop-shadow-sm">
-                      Telepon
-                    </p>
+                    <p className="text-gray-600 text-sm font-medium">Telepon</p>
                     <a
                       href="tel:0882003843947"
-                      className="text-white font-bold hover:text-orange-400 transition-colors text-lg drop-shadow-md"
+                      className="text-gray-900 font-bold hover:text-orange-500 transition-colors text-lg"
                     >
                       0882003843947
                     </a>
@@ -1541,14 +1585,14 @@ function App() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-orange-300 text-sm font-medium drop-shadow-sm">
+                    <p className="text-gray-600 text-sm font-medium">
                       Instagram
                     </p>
                     <a
                       href="https://instagram.com/solvtech.id"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white font-bold hover:text-orange-400 transition-colors text-lg drop-shadow-md"
+                      className="text-gray-900 font-bold hover:text-orange-500 transition-colors text-lg"
                     >
                       @solvtech.id
                     </a>
@@ -1571,12 +1615,10 @@ function App() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-orange-300 text-sm font-medium drop-shadow-sm">
-                      Email
-                    </p>
+                    <p className="text-gray-600 text-sm font-medium">Email</p>
                     <a
                       href="mailto:info@solvtech.id"
-                      className="text-white font-bold hover:text-orange-400 transition-colors text-lg drop-shadow-md"
+                      className="text-gray-900 font-bold hover:text-orange-500 transition-colors text-lg"
                     >
                       info@solvtech.id
                     </a>
@@ -1587,76 +1629,76 @@ function App() {
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-xl font-bold mb-8 text-orange-400">
+              <h3 className="text-xl font-bold mb-8 text-orange-600">
                 Tautan Cepat
               </h3>
               <div className="space-y-4">
                 <a
                   href="#about"
-                  className="block text-gray-300 hover:text-orange-400 transition-colors duration-300"
+                  className="block text-gray-600 hover:text-orange-600 transition-colors duration-300"
                 >
                   Tentang Kami
                 </a>
                 <a
                   href="#services"
-                  className="block text-gray-300 hover:text-orange-400 transition-colors duration-300"
+                  className="block text-gray-600 hover:text-orange-600 transition-colors duration-300"
                 >
                   Layanan
                 </a>
                 <a
                   href="#testimonials"
-                  className="block text-gray-300 hover:text-orange-400 transition-colors duration-300"
+                  className="block text-gray-600 hover:text-orange-600 transition-colors duration-300"
                 >
                   Testimoni
                 </a>
                 <a
                   href="#contact"
-                  className="block text-gray-300 hover:text-orange-400 transition-colors duration-300"
+                  className="block text-gray-600 hover:text-orange-600 transition-colors duration-300"
                 >
                   Kontak
                 </a>
                 <a
                   href="#"
-                  className="block text-gray-300 hover:text-orange-400 transition-colors duration-300"
+                  className="block text-gray-600 hover:text-orange-600 transition-colors duration-300"
                 >
                   Kebijakan Privasi
                 </a>
                 <a
                   href="#"
-                  className="block text-gray-300 hover:text-orange-400 transition-colors duration-300"
+                  className="block text-gray-600 hover:text-orange-600 transition-colors duration-300"
                 >
                   Syarat Layanan
                 </a>
               </div>
             </div>
           </div>
-          <div className="border-t border-orange-500/20 mt-12 pt-8">
+          <div className="border-t border-gray-200 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <p className="text-white text-center md:text-left font-medium drop-shadow-sm">
+              <p className="text-gray-700 text-center md:text-left font-medium">
                 © 2024 SolvTech. Semua hak dilindungi.
               </p>
               <div className="flex space-x-6 text-sm">
                 <a
                   href="#home"
-                  className="text-orange-300 hover:text-orange-400 transition-colors font-medium drop-shadow-sm"
+                  className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
                 >
                   Beranda
                 </a>
                 <a
                   href="#about"
-                  className="text-orange-300 hover:text-orange-400 transition-colors font-medium drop-shadow-sm"
+                  className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
                 >
                   Tentang
                 </a>
                 <a
                   href="#services"
-                  className="text-orange-300 hover:text-orange-400 transition-colors font-medium drop-shadow-sm"
+                  className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
                 >
                   Layanan
                 </a>
                 <a
                   href="#testimonials"
-                  className="text-orange-300 hover:text-orange-400 transition-colors font-medium drop-shadow-sm"
+                  className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
                 >
                   Testimoni
                 </a>
