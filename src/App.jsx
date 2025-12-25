@@ -21,6 +21,7 @@ function App() {
                   src={solvTechLogo}
                   alt="SolvTech Logo"
                   className="h-12 w-auto transition-transform duration-300 group-hover:scale-110 rounded-md object-contain"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
@@ -160,23 +161,8 @@ function App() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
       >
         {/* Light / Professional hero layout (left copy, right visual) */}
-        {/* Advanced Background System */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,165,0,0.03),transparent_70%)]"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_0%,rgba(255,140,0,0.02)_50%,transparent_100%)]"></div>
-          <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(255,165,0,0.01)_60deg,transparent_120deg)]"></div>
-        </div>
-
-        {/* Animated Grid Pattern */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,165,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,165,0,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
-        </div>
-
-        {/* Floating Tech Elements */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-orange-400 rounded-full animate-ping opacity-60"></div>
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-orange-500 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-orange-600 rounded-full animate-bounce"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-1.5 h-1.5 bg-orange-300 rounded-full animate-ping"></div>
+        {/* Simplified Background for a clean, modern look */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-orange-50" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-24">
@@ -200,9 +186,10 @@ function App() {
                   <span className="block">dengan Teknologi</span>
                 </h1>
 
-                <p className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl">
-                  Kami menyediakan solusi IT tingkat enterprise yang mendorong
-                  pertumbuhan, efisiensi, dan inovasi untuk bisnis modern.
+                <p className="text-lg lg:text-xl text-gray-700 leading-relaxed max-w-lg">
+                  Solusi IT terintegrasi untuk mempercepat pertumbuhan dan
+                  efisiensi bisnis Anda — cepat, andal, dan mudah
+                  diimplementasi.
                 </p>
               </div>
 
@@ -346,7 +333,7 @@ function App() {
             {/* Feature 1 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover p-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -375,7 +362,7 @@ function App() {
             {/* Feature 2 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover p-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -404,7 +391,7 @@ function App() {
             {/* Feature 3 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover p-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -433,7 +420,7 @@ function App() {
             {/* Feature 4 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-8 border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover p-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -493,7 +480,7 @@ function App() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-3 relative overflow-hidden">
+            <div className="group relative card card-hover overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-orange-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
@@ -558,7 +545,7 @@ function App() {
             </div>
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover p-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -619,7 +606,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-3 relative overflow-hidden">
+            <div className="group relative card card-hover overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-2xl shadow-orange-500/25 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
@@ -1045,7 +1032,7 @@ function App() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover">
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-orange-500/25">
                     <svg
@@ -1094,7 +1081,7 @@ function App() {
             </div>
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover">
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-orange-500/25">
                     <svg
@@ -1142,7 +1129,7 @@ function App() {
             </div>
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover">
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-orange-500/25">
                     <svg
@@ -1226,7 +1213,7 @@ function App() {
             {/* Benefit 1 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -1255,7 +1242,7 @@ function App() {
             {/* Benefit 2 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
@@ -1283,7 +1270,7 @@ function App() {
             {/* Benefit 3 */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-2">
+              <div className="relative card card-hover">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
                   <svg
                     className="w-8 h-8 text-white"
