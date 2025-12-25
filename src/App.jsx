@@ -1564,7 +1564,7 @@ function App() {
                       href="tel:0882003843947"
                       className="text-gray-900 font-bold hover:text-orange-500 transition-colors text-lg"
                     >
-                      0882003843947
+                      +62 882-0038-43947
                     </a>
                   </div>
                 </div>
@@ -1620,7 +1620,7 @@ function App() {
                       href="mailto:info@solvtech.id"
                       className="text-gray-900 font-bold hover:text-orange-500 transition-colors text-lg"
                     >
-                      info@solvtech.id
+                      solvtech4@gmail.com
                     </a>
                   </div>
                 </div>
