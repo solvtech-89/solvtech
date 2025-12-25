@@ -20,7 +20,7 @@ function App() {
                 <img
                   src={solvTechLogo}
                   alt="SolvTech Logo"
-                  className="h-12 w-auto transition-transform duration-300 group-hover:scale-110 filter brightness-0 invert"
+                  className="h-12 w-auto transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
