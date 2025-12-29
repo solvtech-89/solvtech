@@ -287,16 +287,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: var(--color-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #3b82f6, #f59e0b, #8b5cf6);
+  background: linear-gradient(180deg, #f97316, #ea580c);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #2563eb, #d97706, #7c3aed);
+  background: #ea580c;
 }
 
 /* Exotic texture patterns */
