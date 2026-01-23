@@ -3,6 +3,70 @@ import { useState } from "react";
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [leadEmail, setLeadEmail] = useState("");
+
+  function handleLeadSubmit(e) {
+    e.preventDefault();
+    if (!leadEmail) return;
+    sendAnalyticsEvent("lead_form_submit", {
+      method: "email",
+      email: leadEmail,
+    });
+    const subject = encodeURIComponent(
+      "Permintaan demo / health-check dari website",
+    );
+    const body = encodeURIComponent(`Email: ${leadEmail}\nSumber: Homepage`);
+    window.location.href = `mailto:hello@solvtech.id?subject=${subject}&body=${body}`;
+  }
+
+  function handleBookDemo() {
+    sendAnalyticsEvent("book_demo_click", { method: "email" });
+    const subject = encodeURIComponent("Booking: 15-min Demo - SolvTech");
+    const body = encodeURIComponent(
+      "Saya tertarik untuk diskusi singkat tentang project/kolaborasi.",
+    );
+    window.location.href = `mailto:hello@solvtech.id?subject=${subject}&body=${body}`;
+  }
+
+  function handleMarketingAudit() {
+    sendAnalyticsEvent("request_audit_click", { method: "whatsapp" });
+    const msg = `Halo SolvTech, saya ingin meminta Audit Marketing Tech (30 menit) — mohon info dan jadwal.`;
+    const url = `https://wa.me/62882003843947?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
+  }
+
+  function openWhatsApp(message) {
+    const base = "https://wa.me/62882003843947";
+    const text = encodeURIComponent(`Halo SolvTech, ${message}`);
+    const url = `${base}?text=${text}`;
+    window.open(url, "_blank");
+  }
+
+  function sendAnalyticsEvent(name, params = {}) {
+    try {
+      if (window.gtag) {
+        window.gtag("event", name, params);
+      } else {
+        console.log("gtag not found — event:", name, params);
+      }
+    } catch (err) {
+      console.warn("analytics error", err);
+    }
+  }
+
+  function handleScheduleConsult() {
+    sendAnalyticsEvent("schedule_consult_click", {
+      method: "whatsapp",
+      duration: "15m",
+    });
+    openWhatsApp("saya ingin menjadwalkan konsultasi teknis 15 menit");
+  }
+
+  function handleContact(service) {
+    sendAnalyticsEvent("contact_service_click", { service });
+    const message = `saya tertarik dengan layanan: ${service} — mohon info dan langkah selanjutnya.`;
+    openWhatsApp(message);
+  }
   return (
     <div className="min-h-screen bg-white relative overflow-hidden scroll-smooth">
       {/* Enhanced Background with Orange Theme */}
@@ -176,65 +240,71 @@ function App() {
                 </span>
               </div>
 
-              {/* Main Headline */}
-              <div className="space-y-6">
-                <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
-                  <span className="block">Transformasikan</span>
-                  <span className="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent">
-                    Bisnis Anda
+              {/* Main Headline (professional) */}
+              <div className="space-y-4">
+                <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
+                  <span className="block text-orange-600">
+                    Tim DevOps & Production-grade Engineering
                   </span>
-                  <span className="block">dengan Teknologi</span>
                 </h1>
 
-                <p className="text-lg lg:text-xl text-gray-700 leading-relaxed max-w-lg">
-                  Solusi IT terintegrasi untuk mempercepat pertumbuhan dan
-                  efisiensi bisnis Anda — cepat, andal, dan mudah
-                  diimplementasi.
+                <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-lg">
+                  Kami membantu perusahaan merancang, menjalankan, dan
+                  mengamankan platform production — fokus pada reliabilitas,
+                  keamanan, dan time-to-value yang terukur.
                 </p>
               </div>
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="https://wa.me/+62882003843947?text=Halo%20SolvTech,%20saya%20tertarik%20untuk%20memulai%20proyek%20dengan%20Anda"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg transform hover:-translate-y-1 transition-all duration-200 shadow-md hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
+                <button
+                  onClick={handleScheduleConsult}
+                  className="inline-flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 bg-orange-600 text-white font-medium rounded-md shadow hover:bg-orange-700 transition-colors"
                 >
-                  <span className="relative z-10 flex items-center justify-center">
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
-                    </svg>
-                    Mulai Sekarang
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-orange-500 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                  Jadwalkan Konsultasi 15 menit
+                </button>
+
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-3 px-5 py-3 border border-gray-200 text-gray-700 font-medium rounded-md hover:bg-gray-50 transition-colors"
+                >
+                  Lihat Layanan
                 </a>
-                <button className="group px-6 py-3 md:px-8 md:py-4 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transform hover:-translate-y-0.5 transition-all duration-200 shadow-sm">
-                  <span className="flex items-center">
-                    Lihat Portfolio
+              </div>
+
+              {/* Marketing-focused quick audit CTA */}
+              <div className="mt-4">
+                <div className="inline-flex items-center bg-orange-50 border border-orange-100 px-4 py-2 rounded-lg">
+                  <div className="mr-3">
                     <svg
-                      className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                      className="w-5 h-5 text-orange-600"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      focusable="false"
                     >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M9 5l7 7-7 7"
+                        d="M9 17v-6a2 2 0 012-2h2a2 2 0 012 2v6m-6 0h6"
                       />
                     </svg>
-                  </span>
-                </button>
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium text-gray-900">
+                      Butuh Leads Cepat?
+                    </div>
+                    <div className="text-xs text-gray-600">
+                      Gratis marketing tech audit 30 menit untuk tim Anda.
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleMarketingAudit}
+                    className="ml-4 px-3 py-1 bg-orange-500 text-white rounded-md text-sm"
+                  >
+                    Request Audit
+                  </button>
+                </div>
               </div>
 
               {/* Trust Indicators */}
@@ -499,11 +569,12 @@ function App() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Pengembangan Web
+                  Conversion Engineering
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Aplikasi web custom yang dibangun dengan framework modern,
-                  dioptimalkan untuk performa dan skalabilitas.
+                  Landing pages, instrumentation, and experiment pipelines to
+                  increase lead conversion — A/B tests, analytics, and CRO
+                  engineering focused on measurable uplift.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-orange-600 font-medium group-hover:text-orange-500 transition-colors duration-300">
@@ -562,11 +633,12 @@ function App() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Pengembangan Mobile
+                  CDP & Data Pipelines
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Aplikasi mobile native dan cross-platform yang memberikan
-                  pengalaman pengguna yang luar biasa.
+                  Unified customer data, realtime segmentation and ETL pipelines
+                  so marketing can target, personalize, and measure campaigns
+                  with confidence.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-orange-400 font-medium group-hover:text-orange-300 transition-colors duration-300">
@@ -631,11 +703,12 @@ function App() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Sistem Enterprise
+                  Observability & SRE
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Sistem ERP custom dan manajemen bisnis yang merampingkan
-                  operasi dan meningkatkan efisiensi.
+                  Production-grade monitoring, SLO-driven operations and
+                  reliability engineering to reduce incidents and speed up safe
+                  releases.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-orange-400 font-medium group-hover:text-orange-300 transition-colors duration-300">
@@ -694,11 +767,12 @@ function App() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Desain UI/UX
+                  Product & Growth Design
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Solusi desain berpusat pada pengguna yang meningkatkan
-                  pengalaman pengguna dan mendorong engagement.
+                  Design sprints, experiment-focused interfaces and rapid
+                  prototypes that turn traffic into measurable leads and
+                  customers.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-orange-400 font-medium group-hover:text-orange-300 transition-colors duration-300">
@@ -757,11 +831,12 @@ function App() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Pemasaran Digital
+                  Growth Engineering & Martech
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Kampanye pemasaran digital strategis yang mendorong engagement
-                  dan mengkonversi prospek menjadi pelanggan.
+                  Engineering integrations for ads, attribution, and automation
+                  — connect Martech, run data-driven campaigns and close the
+                  loop on ROI.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-orange-400 font-medium group-hover:text-orange-300 transition-colors duration-300">
@@ -820,11 +895,12 @@ function App() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Solusi Cloud
+                  Cloud Migration & FinOps
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Infrastruktur cloud yang scalable dan layanan migrasi untuk
-                  operasi bisnis modern.
+                  Migrate safely with infrastructure-as-code, secure landing
+                  zones and FinOps optimizations — reduce cloud spend while
+                  improving reliability and deployment speed.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-orange-400 font-medium group-hover:text-orange-300 transition-colors duration-300">
@@ -843,24 +919,12 @@ function App() {
                       />
                     </svg>
                   </div>
-                  <a
-                    href="https://wa.me/+62882003843947?text=Halo%20SolvTech,%20saya%20tertarik%20dengan%20layanan%20Cloud%20Solutions"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => handleContact("Cloud Migration & FinOps")}
                     className="group/btn relative bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-green-500/25"
                   >
-                    <span className="flex items-center">
-                      <svg
-                        className="w-4 h-4 mr-2"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
-                      </svg>
-                      Hubungi
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-lg opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
-                  </a>
+                    <span className="flex items-center">Hubungi</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -883,11 +947,12 @@ function App() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Pelatihan Kreatif
+                  Content & Creative Ops Training
                 </h3>
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Program pelatihan intensif untuk mengembangkan skill kreatif
-                  dan teknis dalam bidang teknologi dan desain.
+                  Workshop intensif untuk tim marketing: content planning,
+                  repurposing, creative ops and distribution strategies that
+                  consistently generate leads.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-orange-400 font-medium group-hover:text-orange-300 transition-colors duration-300">
@@ -906,24 +971,14 @@ function App() {
                       />
                     </svg>
                   </div>
-                  <a
-                    href="https://wa.me/+62882003843947?text=Halo%20SolvTech,%20saya%20tertarik%20dengan%20layanan%20Pelatihan%20Kreatif"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() =>
+                      handleContact("Content & Creative Ops Training")
+                    }
                     className="group/btn relative bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-green-500/25"
                   >
-                    <span className="flex items-center">
-                      <svg
-                        className="w-4 h-4 mr-2"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
-                      </svg>
-                      Hubungi
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-lg opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
-                  </a>
+                    <span className="flex items-center">Hubungi</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -952,10 +1007,12 @@ function App() {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-orange-400 transition-colors duration-300">
-                  Pelatihan Kreator
+                  Creator Growth Bootcamp
                 </h3>
                 <p className="text-gray-600 text-lg leading-relaxed transition-colors duration-300 mb-6">
-                  Workshop dan training untuk meningkatkan skill konten kreatif
+                  Hands-on bootcamp for creators and teams: content strategies,
+                  distribution, and growth loops to turn audiences into leads
+                  and revenue.
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-orange-400 font-medium group-hover:text-orange-300 transition-colors duration-300">
@@ -974,24 +1031,12 @@ function App() {
                       />
                     </svg>
                   </div>
-                  <a
-                    href="https://wa.me/+62882003843947?text=Halo%20SolvTech,%20saya%20tertarik%20dengan%20layanan%20Pelatihan%20Kreator"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => handleContact("Creator Growth Bootcamp")}
                     className="group/btn relative bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-green-500/25"
                   >
-                    <span className="flex items-center">
-                      <svg
-                        className="w-4 h-4 mr-2"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
-                      </svg>
-                      Hubungi
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-lg opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
-                  </a>
+                    <span className="flex items-center">Hubungi</span>
+                  </button>
                 </div>
               </div>
             </div>
